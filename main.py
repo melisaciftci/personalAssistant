@@ -1,3 +1,6 @@
+from datetime import datetime
+from time import strftime
+
 
 def add_task(task):
     try:
@@ -27,6 +30,11 @@ def show_tasks():
         for index, tasks in enumerate(tasks, start=1):
             print(f"{index}.{tasks.strip()}")
 
+def date_time():
+    current_time=datetime.now()
+    formatted_time = current_time.strftime("%Y-%m-%d %H: %M: %S")
+    return formatted_time
+
 while True:
     user_input = input("What can I do for you?").strip()
 
@@ -40,6 +48,9 @@ while True:
 
     elif 'show tasks' in user_input:
         print(show_tasks())
+
+    elif 'show date' in user_input:
+        print("Current Date and Time: ", date_time())
 
     elif 'bye' in user_input:
         print('Goodbye!')

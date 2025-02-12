@@ -1,8 +1,10 @@
 
 def add_task(task):
-    tasks = []
-    with open('tasks.txt', 'r') as file:
-        tasks =file.readlines()
+    try:
+        with open('tasks.txt', 'r') as file:
+            tasks = file.readlines()
+    except FileNotFoundError:
+        tasks=[]
 
     tasks.append(task + '\n')
 

@@ -1,6 +1,5 @@
 from datetime import datetime
-from time import strftime
-
+import random
 
 def add_task(task):
     try:
@@ -35,6 +34,14 @@ def date_time():
     formatted_time = current_time.strftime("%Y-%m-%d %H: %M: %S")
     return formatted_time
 
+def random_quote(mood):
+    if mood=='happy':
+        quotes = ['Today is a good day!', 'You are glowing!']
+    elif mood=='sad':
+        quotes = ['You can do it!', 'Believe in yourself!']
+    return random.choice(quotes)
+
+
 while True:
     user_input = input("What can I do for you?").strip()
 
@@ -51,6 +58,14 @@ while True:
 
     elif 'show date' in user_input:
         print("Current Date and Time: ", date_time())
+
+    elif 'motivate' in user_input or f"today's quote" in user_input:
+        print("How do you feel today?")
+        mood = input("Mood: ")
+        if mood:
+            print(random_quote(mood))
+        else:
+            print("You didn't specify your mood.")
 
     elif 'bye' in user_input:
         print('Goodbye!')
